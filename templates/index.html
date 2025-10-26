@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Визуализация множеств</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <h1>Визуализация операций над множествами</h1>
+
+    <form method="POST" action="/">
+        <label>Множество A:</label>
+        <input name="set_a" placeholder="например: 1,2,3">
+
+        <label>Множество B:</label>
+        <input name="set_b" placeholder="например: 2,3,4">
+
+        <select name="operation">
+            <option value="union">Объединение</option>
+            <option value="intersection">Пересечение</option>
+            <option value="difference">Разность A\B</option>
+            <option value="sym_diff">Симметрическая разность</option>
+            <option value="cartesian">Декартово произведение</option>
+        </select>
+
+        <button type="submit">Выполнить</button>
+    </form>
+
+    {% if result_text %}
+        <p id="result">{{ result_text }}</p>
+    {% endif %}
+
+    {% if img %}
+        <h2>Диаграмма Венна:</h2>
+        <img src="data:image/png;base64,{{ img }}" alt="Диаграмма Венна">
+    {% endif %}
+</body>
+</html>
