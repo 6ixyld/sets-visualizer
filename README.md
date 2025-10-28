@@ -10,7 +10,7 @@
 
 ## Установка
 ```bash
-git clone https://github.com/<username>/sets-visualizer.git
+git clone https://github.com/6ixyld/sets-visualizer.git
 cd sets-visualizer
 python -m venv venv
 source venv/bin/activate  # или venv\Scripts\activate на Windows
