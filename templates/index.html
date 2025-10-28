@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Визуализация операций над множествами</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body>
+    <h1>Визуализация операций над множествами</h1>
+    <div class="subtitle">Интерактивная диаграмма Венна с отображением элементов</div>
+
+    <div class="container">
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label>Множество A:</label>
+                <input name="set_a" placeholder="Введите элементы через запятую, например: 1,2,3,5,7"
+                    value="{{ request.form.set_a if request.form }}">
+            </div>
+
+            <div class="form-group">
+                <label>Множество B:</label>
+                <input name="set_b" placeholder="Введите элементы через запятую, например: 2,3,4,6,8"
+                    value="{{ request.form.set_b if request.form }}">
+            </div>
+
+            <div class="form-group">
+                <label>Выберите операцию:</label>
+                <select name="operation">
+                    <option value="union">Объединение (A ∪ B)</option>
+                    <option value="intersection">Пересечение (A ∩ B)</option>
+                    <option value="difference">Разность (A \ B)</option>
+                    <option value="sym_diff">Симметрическая разность (A Δ B)</option>
+                    <option value="cartesian">Декартово произведение (A × B)</option>
+                </select>
+            </div>
+
+            <button type="submit">Выполнить операцию</button>
+        </form>
+
+        {% if result_text %}
+        <div id="result">{{ result_text }}</div>
+        {% endif %}
+
+        {% if img %}
+        <div class="venn-container">
+            <img src="data:image/png;base64,{{ img }}" alt="Диаграмма Венна">
+            <div class="operation-info">Элементы отображаются непосредственно в соответствующих областях диаграммы</div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
