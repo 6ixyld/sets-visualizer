@@ -1,6 +1,6 @@
 # venn_visual.py
 import matplotlib
-matplotlib.use('Agg')
+matplotlib.use('Agg')  # <- критично! Без оконного backend
 import matplotlib.pyplot as plt
 from matplotlib_venn import venn2
 import io

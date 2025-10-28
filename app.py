@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from venn_visual import plot_venn  # Убрал лишний импорт
+from venn_visual import plot_venn
 from sets_logic import *
 
 app = Flask(__name__)
